@@ -1,0 +1,64 @@
+<mat-card class="content" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Members ({{ this.term }})</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container">
+      <div class="members-grid">
+        <br />
+        <div class="member-details">
+          <div *ngFor="let member of memberDetails" class="member-item">
+            <div>
+              {{ member.user.first_name }} {{ member.user.last_name }} ({{
+                member.user.pronouns
+              }})
+              <span *ngIf="member.title">
+                <i>{{ member.title }}</i>
+              </span>
+              <button
+                mat-icon-button
+                color="basic"
+                *ngIf="(this.checkPermissions() | async) === true"
+                [routerLink]="[member.user_id, 'edit']"
+                [queryParams]="{ term: member!.term }">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card class="content" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Leaders ({{ this.term }})</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container">
+      <div class="leadership-grid">
+        <br />
+        <div class="leader-details">
+          <div *ngFor="let leader of leaderDetails" class="member-item">
+            <div>
+              {{ leader.user.first_name }} {{ leader.user.last_name }} ({{
+                leader.user.pronouns
+              }})
+              <span *ngIf="leader.title">
+                <i> {{ leader.title }}</i>
+              </span>
+              <button
+                mat-icon-button
+                color="basic"
+                *ngIf="(this.checkPermissions() | async) === true"
+                [routerLink]="[leader.user.id, 'edit']"
+                [queryParams]="{ term: leader!.term }">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></mat-card-content
+  >
+</mat-card>

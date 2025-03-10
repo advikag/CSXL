@@ -1,0 +1,84 @@
+<form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+  <mat-card class="content" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Member Info</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container">
+        <div class="members-grid">
+          <div class="member-details">
+            <p>
+              <b>Name:</b> {{ member?.user?.first_name }}
+              {{ member?.user?.last_name }}
+            </p>
+            <p><b>Pronouns:</b> {{ member?.user?.pronouns }}</p>
+            <p><b>Term:</b> {{ member?.term }}</p>
+            <p>
+              <b>Membership Type:</b>
+              {{ member?.member_type === 0 ? 'Member' : 'Leader' }}
+            </p>
+            <mat-form-field appearance="outline" color="accent">
+              <mat-label>Title</mat-label>
+              <input
+                matInput
+                placeholder=""
+                formControlName="title"
+                name="title" />
+            </mat-form-field>
+            <div class="button-container">
+              <button
+                mat-stroked-button
+                class="link-button"
+                style="margin-right: 10px"
+                *ngIf="(checkPermissions() | async) === true"
+                (click)="
+                  member &&
+                    member.user &&
+                    (member.admin_status
+                      ? removeAdmin(member.user.id)
+                      : makeAdmin(member.user.id))
+                ">
+                {{ member?.admin_status ? 'Remove Admin' : 'Make Admin' }}
+              </button>
+              <button
+                mat-stroked-button
+                class="link-button"
+                style="margin-right: 10px"
+                *ngIf="(checkPermissions() | async) === true"
+                (click)="
+                  member &&
+                    member.user &&
+                    (member.member_type === 1
+                      ? removeLeader(member.user.id)
+                      : makeLeader(member.user.id))
+                ">
+                {{ member?.member_type ? 'Remove Leader' : 'Make Leader' }}
+              </button>
+              <button
+                mat-stroked-button
+                class="link-button"
+                (click)="removeMember(member?.user?.id)">
+                Delete
+              </button>
+            </div>
+            <div class="button-container">
+              <button
+                mat-stroked-button
+                type="submit"
+                style="margin-right: 10px">
+                Save
+              </button>
+
+              <button
+                mat-stroked-button
+                class="link-button"
+                (click)="onCancel()">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

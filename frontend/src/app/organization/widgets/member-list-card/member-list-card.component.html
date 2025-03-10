@@ -1,0 +1,27 @@
+<mat-card class="member-detail-card" appearance="outlined">
+  <div class="member-title-container">
+    <div class="member-title">
+      <mat-card-title> Members </mat-card-title>
+    </div>
+  </div>
+  <mat-divider id="top-divider" />
+  <div *ngFor="let member of memberDetails">
+    <div><strong>Name:</strong> {{ member.first_name }}</div>
+    <div><strong>Last Name:</strong> {{ member.last_name }}</div>
+    <div><strong>Pronouns:</strong> {{ member.pronouns }}</div>
+
+    <div *ngIf="leaderDetails && leaderDetails.length > 0">
+      <mat-divider></mat-divider>
+      <div class="member-title-container">
+        <div class="member-title">
+          <mat-card-title>Leaders</mat-card-title>
+        </div>
+      </div>
+      <div *ngFor="let leader of leaderDetails">
+        <div><strong>Name:</strong> {{ leader.first_name }}</div>
+        <div><strong>Last Name:</strong> {{ leader.last_name }}</div>
+        <div><strong>Pronouns:</strong> {{ leader.pronouns }}</div>
+      </div>
+    </div>
+  </div>
+</mat-card>

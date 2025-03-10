@@ -1,0 +1,66 @@
+.container {
+    /* ensures the container takes full width */
+    width: 100%;
+  }
+  
+  .members-grid {
+    /* this will create a flexbox container */
+    display: flex;
+    /* aligns children (items) in a row */
+    flex-direction: row;
+    /* ensures that the items do not wrap onto the next line */
+    flex-wrap: nowrap;
+    /* spaces out the items inside the container */
+    justify-content: space-between;
+  }
+  
+  .members-column,
+  .leadership-column {
+    /* ensures the children (items) take up equal space */
+    flex: 1;
+
+  }
+
+  .leadership-grid {
+    /* this will create a flexbox container */
+    display: flex;
+    /* aligns children (items) in a row */
+    flex-direction: row;
+    /* ensures that the items do not wrap onto the next line */
+    flex-wrap: nowrap;
+    /* spaces out the items inside the container */
+    justify-content: space-between;
+  }
+
+  
+  /* If you want to set a max-width on each column to ensure they don't get too wide */
+  .members-column,
+  .leadership-column {
+    max-width: 50%; /* Adjust max-width as needed */
+  }
+
+  
+  .members-column > div:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: -10px;
+    padding-bottom: 1px;
+    width: 200%;
+    box-sizing: border-box;}
+
+    .member-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px; /* Adjust margin as needed */
+    }
+    
+    .member-details {
+      flex-grow: 1;
+      margin-right: 10px; /* Adjust margin as needed */
+    }
+
+      
+    .leader-details {
+      flex-grow: 1;
+      margin-right: 10px; /* Adjust margin as needed */
+    }

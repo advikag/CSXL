@@ -1,0 +1,26 @@
+<mat-card class="member-request-card" appearance="outlined">
+  <div class="member-title-container">
+    <div class="member-title">
+      <mat-card-title> Member Request </mat-card-title>
+    </div>
+  </div>
+  <mat-divider id="top-divider"></mat-divider>
+  <div *ngFor="let member of memberDetails" class="member">
+    <p>
+      {{ member.user.first_name }} {{ member.user.last_name }} ({{
+        member.user.pronouns
+      }}) {{ member.term }}
+      <button
+        (click)="approveMembership(member.user.id)"
+        mat-stroked-button
+        class="link-button">
+        Accept</button
+      ><button
+        mat-stroked-button
+        class="link-button"
+        (click)="removeMembership(member.user.id)">
+        Deny
+      </button>
+    </p>
+  </div>
+</mat-card>

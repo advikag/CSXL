@@ -1,0 +1,11 @@
+.member {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1px; 
+  padding-bottom: 1px; 
+  width: 100%; 
+  box-sizing: border-box; 
+  }
+  
+  .member:last-child {
+    border-bottom: none; 
+  }
